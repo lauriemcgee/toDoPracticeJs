@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Example</title>
+   <style>
+    .complete {
+      text-decoration: line-through;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <p onmousedown="changeStatus(this)">Pay bills</p>
+  <p onmousedown="changeStatus(this)">Wash car</p>
+  <p onmousedown="changeStatus(this)">Get laundry</p>
+  <p> <h4> Numer of items complete: </h4> 
+    <h5 id="num-complete">0</h5></p>
+  <button onmousedown="hideCompleteTasks()"> Hide completed tasks</button>
+  <button onmousedown="showAllTasks()"> Show all tasks </button>
+  <script>
+    function changeStatus(ptag) {
+      ptag.classList.toggle('complete');
+      var completedTasks = document.querySelectorAll('.complete');
+      var countTag = document.querySelector('#num-complete');
+      countTag.innerHTML = completedTasks.length;
+    }
+    function hideCompleteTasks() {
+      var completedTasks = document.querySelectorAll('.complete'); 
+      for (var i = 0; i < completedTasks.length; i++) {
+        var completedTask = completedTasks[i];
+        completedTask.classList.add('hidden');
+      }
+    }
+    function showAllTasks() {
+      var completedTasks = document.querySelectorAll('.complete');
+      for (var i = 0; i < completedTasks.length; i++) {
+        var completedTask = completedTasks[i];
+        completedTask.classList.remove('hidden');
+      }
+    }
+    
+  </script>
+</body>
+</html>
